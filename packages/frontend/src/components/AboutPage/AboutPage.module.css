@@ -1,0 +1,25 @@
+.aboutText {
+  font-size: 1.4em;
+  padding-left: 1em;
+}
+
+.Card {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1em;
+  margin: 1em;
+  background-color: whitesmoke;
+  border: var(--CORNELLRED) 2px solid;
+}
+
+.Card:last-of-type {
+  margin-bottom: calc(100vh - 20rem);
+}
+
+@media screen and (min-width: 576px) {
+  .Card {
+    display: flex;
+    flex-direction: row;
+  }
+}

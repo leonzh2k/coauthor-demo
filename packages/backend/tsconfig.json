@@ -1,0 +1,30 @@
+{
+  "exclude": [
+    "src/tests",
+    "./src/db/migrations",
+    "./src/db/checkMigrationStatus.ts",
+    "./src/db/esmMigrationProvider.ts",
+    "./src/db/migrate.ts",
+    "./src/db/migrationRunner.ts",
+    "./src/db/seedDatabase.ts",
+    "./src/db/clearDatabase.ts",
+    "jest.config.js"
+  ],
+  "compilerOptions": {
+    /* Visit https://aka.ms/tsconfig to read more about this file */
+    "outDir": "../../dist",
+    "module": "nodenext" /* Specify what module code is generated. */,
+    "rootDir": "src" /* Specify the root folder within your source files. */,
+    "allowJs": false /* Allow JavaScript files to be a part of your program. Use the 'checkJS' option to get errors from these files. */,
+    "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
+    "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
+    "strict": true /* Enable all strict type-checking options. */,
+    "skipLibCheck": true /* Skip type checking all .d.ts files. */,
+    "sourceMap": true,
+    "inlineSources": true,
+    // Set `sourceRoot` to  "/" to strip the build path prefix
+    // from generated source code references.
+    // This improves issue grouping in Sentry.
+    "sourceRoot": "/"
+  }
+}

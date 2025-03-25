@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+/* || CSS RESET */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* || VARIABLES */
+:root {
+  --FF: "Roboto", sans-serif;
+  --FONTCOLOR: #000;
+  --CORNELLRED: #b31b1b;
+}
+
+/* || UTILITY CLASSES */
+
+.bold {
+  font-weight: 700;
+}
+
+.boldUnder {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.header {
+  font-family: var(--FF);
+  font-weight: 100;
+  margin-top: 2%;
+}
+
+body {
+  margin: 0;
+  font-family:
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+}
+
+table {
+  table-layout: fixed;
+  width: 85%;
+  border-collapse: collapse;
+  border: 3px solid black;
+  border-spacing: 0 5px;
+  font-family: "Roboto";
+  font-size: 1.2em;
+  display: block;
+  overflow: auto;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  width: auto;
+}
+
+input {
+  width: 40%;
+  border: none;
+  border-bottom: 2px solid black;
+}
+
+a {
+  font-weight: bold;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--CORNELLRED);
+  text-decoration: underline;
+}
+
+@media screen and (min-width: 576px) {
+  img {
+    max-width: 100%;
+    width: 300px;
+    height: auto;
+    margin: auto;
+  }
+}

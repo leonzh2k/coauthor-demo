@@ -1,0 +1,37 @@
+{
+  "name": "coauthor",
+  "version": "0.0.1",
+  "workspaces": [
+    "packages/*"
+  ],
+  "type": "module",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node --import ./dist/instrument.js dist/index.js",
+    "dev": "cross-env NODE_ENV=development concurrently --raw --kill-others \"npm run dev -w @coauthor/backend\" \"npm run build:dev -w @coauthor/frontend\"",
+    "test": "vitest run --testTimeout 60000 --hookTimeout 60000",
+    "test:coverage": "vitest run --testTimeout 60000 --hookTimeout 60000",
+    "build:backend": "npm run build -w @coauthor/backend",
+    "build:frontend": "npm run build -w @coauthor/frontend",
+    "format:check": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "lint": "xo .",
+    "sentry:sourcemaps": "cross-env-shell \"sentry-cli sourcemaps inject --org redacted --project coauthor-backend ./dist && sentry-cli sourcemaps upload --auth-token $SENTRY_AUTH_TOKEN --org redacted --project coauthor-backend ./dist\""
+  },
+  "author": "MaffieLab",
+  "license": "MIT",
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@sentry/cli": "^2.21.2",
+    "concurrently": "^8.2.0",
+    "eslint-config-xo-react": "^0.27.0",
+    "nodemon": "^3.1.7",
+    "prettier": "^3.5.3",
+    "typescript": "^5.5.4",
+    "vitest": "^3.0.8",
+    "@vitest/coverage-v8": "^3.0.8",
+    "xo": "^0.60.0"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "extends": ["eslint-config-xo-react"],
+  "ignores": ["**/*.js"],
+  "overrides": [
+    {
+      "files": "packages/extension/**/*.ts",
+      "rules": {
+        "n/prefer-global/process": "off",
+        "unicorn/prefer-string-replace-all": "off"
+      }
+    }
+  ],
+  "rules": {
+    "@typescript-eslint/indent": "off",
+    "@typescript-eslint/object-curly-spacing": "off",
+    "@typescript-eslint/quotes": "off",
+    "@typescript-eslint/comma-dangle": "off",
+    "@typescript-eslint/brace-style": "off",
+    "@typescript-eslint/semi": "off",
+    "@typescript-eslint/consistent-type-definitions": "off",
+    "@typescript-eslint/naming-convention": "off",
+    "@typescript-eslint/ban-types": "warn",
+    "@typescript-eslint/no-unsafe-argument": "warn",
+    "@typescript-eslint/no-unsafe-assignment": "warn",
+    "@typescript-eslint/non-nullable-type-assertion-style": "off",
+    "react/jsx-indent": "off",
+    "react/jsx-indent-props": "off",
+    "react/jsx-tag-spacing": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/function-component-definition": [
+      "error",
+      { "namedComponents": "arrow-function" }
+    ],
+    "react/no-array-index-key": "warn",
+    "import/extensions": "off",
+    "import/no-unassigned-import": "warn",
+    "import/no-mutable-exports": "warn",
+    "import/no-extraneous-dependencies": "off",
+    "n/file-extension-in-import": "error",
+    "unicorn/prevent-abbreviations": "off",
+    "unicorn/filename-case": "off",
+    "unicorn/relative-url-style": ["error", "always"],
+    "unicorn/prefer-module": "warn",
+    "unicorn/prefer-top-level-await": "warn",
+    "unicorn/prefer-ternary": "warn",
+    "unicorn/no-await-expression-member": "warn",
+    "quotes": "off",
+    "indent": "off",
+    "comma-dangle": "off",
+    "jsx-quotes": "off",
+    "no-trailing-spaces": "off",
+    "object-curly-newline": "off",
+    "object-curly-spacing": "off",
+    "operator-linebreak": "off",
+    "arrow-body-style": "off",
+    "object-shorthand": "off",
+    "arrow-parens": ["error", "always"],
+    "no-undef": "off",
+    "new-cap": "warn",
+    "capitalized-comments": "off",
+    "no-await-in-loop": "off",
+    "no-multi-str": "warn"
+  }
+}

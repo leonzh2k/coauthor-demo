@@ -1,0 +1,35 @@
+name: Deploy Database
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Environment to deploy to"
+        type: environment
+        required: true
+
+# Runs before env defined so may not be able to use env.ENVIRONMENT here
+run-name: Deploy ${{ github.event.inputs.environment }} database
+
+jobs:
+  deploy:
+    name: Deploy database
+    runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.environment }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.14.0"
+      - name: create env file
+        run: |
+          touch .env.${{ github.event.inputs.environment }}
+          echo DATABASE_URL="${DATABASE_URL}" >> .env.${{ github.event.inputs.environment }}
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      - name: Install dependencies
+        run: npm ci
+      - name: Run migrations
+        run: NODE_ENV=${{ github.event.inputs.environment }} MIGRATE_ACTION=latest npx tsx packages/backend/src/db/migrationRunner.ts

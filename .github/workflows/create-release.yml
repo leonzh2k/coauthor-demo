@@ -1,0 +1,68 @@
+name: Create new release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  get-release-info:
+    name: "Get release info"
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.get-version.outputs.VERSION }}
+      archive-name: ${{ steps.get-archive-name.outputs.ARCHIVE_NAME }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Get release version from package.json
+        id: "get-version"
+        run: |
+          version=$(node -p "require('./packages/extension/package.json').version")
+          echo "VERSION=$version" >> $GITHUB_OUTPUT
+          echo "VERSION=$version" >> $GITHUB_ENV
+
+      - name: Construct archive name using release version
+        id: "get-archive-name"
+        run: |
+          echo "ARCHIVE_NAME=coauthor-$VERSION" >> $GITHUB_OUTPUT
+        env:
+          VERSION: ${{env.VERSION}}
+
+  build-chrome-extension:
+    name: Build extension
+    needs: [get-release-info]
+    uses: ./.github/workflows/build-extension-reusable.yml
+    with:
+      environment: production
+      archive-name: ${{needs.get-release-info.outputs.archive-name}}
+    secrets: inherit
+
+  upload-extension:
+    name: Upload extension to chrome web store
+    needs: [build-chrome-extension, get-release-info]
+    runs-on: ubuntu-latest
+    steps:
+      # must use this to access artifact created in a different job
+      - name: Download bundle artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{needs.get-release-info.outputs.archive-name}}
+          path: "./${{needs.get-release-info.outputs.archive-name}}"
+
+      # download artifact action unzips on download (not configurable) so must zip up again
+      - name: Archive build
+        run: |
+          (cd "./${{needs.get-release-info.outputs.archive-name}}"; zip -r "../${{needs.get-release-info.outputs.archive-name}}.zip" ./)
+
+      - name: Install webstore cli
+        run: |
+          npm install -g chrome-webstore-upload-cli@3.3.1
+
+      - name: Upload step
+        run: |
+          chrome-webstore-upload \
+            --source ${{needs.get-release-info.outputs.archive-name}}.zip \
+            --extension-id ${{ vars.EXTENSION_ID }} \
+            --client-id ${{ secrets.CHROME_WEBSTORE_UPLOAD_OAUTH_CLIENT_ID }} \
+            --client-secret ${{ secrets.CHROME_WEBSTORE_UPLOAD_OAUTH_CLIENT_SECRET }} \
+            --refresh-token ${{ secrets.CHROME_WEBSTORE_UPLOAD_OAUTH_REFRESH_TOKEN }}

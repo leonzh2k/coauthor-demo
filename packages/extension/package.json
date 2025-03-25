@@ -1,0 +1,28 @@
+{
+  "name": "@coauthor/extension",
+  "version": "0.7.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development UPLOAD_SOURCEMAPS=false nodemon --watch webpack.common.js --watch webpack.dev.js --exec \"webpack --watch --config webpack.dev.js\"",
+    "dev:sourcemaps": "cross-env NODE_ENV=development UPLOAD_SOURCEMAPS=true webpack --watch --config webpack.dev.js"
+  },
+  "author": "MaffieLab",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chrome": "0.0.239",
+    "@types/jsrsasign": "^10.5.12",
+    "copy-webpack-plugin": "^11.0.0",
+    "ts-loader": "^9.4.4",
+    "webpack": "^5.88.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-merge": "^5.9.0"
+  },
+  "dependencies": {
+    "@sentry/browser": "^7.116.0",
+    "@sentry/types": "^8.5.0",
+    "@sentry/webpack-plugin": "^2.7.1",
+    "jsrsasign": "^11.0.0"
+  }
+}

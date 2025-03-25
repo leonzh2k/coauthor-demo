@@ -1,0 +1,35 @@
+{
+  "name": "@coauthor/frontend",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently --raw --kill-others \"vite\" \"npm run typecheck -- --watch\"",
+    "test": "vitest run --testTimeout 60000 --hookTimeout 60000",
+    "test:coverage": "vitest run --coverage --testTimeout 60000 --hookTimeout 60000",
+    "typecheck": "tsc --noEmit",
+    "build:dev": "concurrently --raw --kill-others \"vite build --watch\" \"npm run typecheck -- --watch\"",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@sentry/integrations": "^7.114.0",
+    "@sentry/react": "^7.119.2",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.7.2",
+    "react-dom": "^18.2.0",
+    "axios": "^1.8.2",
+    "bootstrap": "^5.2.3",
+    "react-router-dom": "^6.21.2",
+    "@tanstack/react-table": "^8.17.3",
+    "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "vite": "^5.4.12",
+    "vite-plugin-eslint": "^1.8.1"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "4.9.5"
+  },
+  "author": "MaffieLab"
+}
