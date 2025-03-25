@@ -52,7 +52,7 @@ What happens when a user wants to view the crowdsourced dataset?
 
 ### What code have I personally contributed?
 
-Although I have worked on major and minor features and fixes all over the codebase, I primarily have "ownership" over the server, database, test framework, build system, and CI/CD pipeline, having built these components almost completely by myself. But you want a more quantitative breakdown of code I've contributed it's probably something like this:
+Although I have worked on major and minor features and fixes all over the codebase, I primarily have "ownership" over the server, database, test framework, build system, and CI/CD pipeline, having built these components almost completely by myself. But if you want a more quantitative breakdown of code I've contributed it's probably something like this:
 
 - Browser extension: 70% me
 - REST API: 95% me
