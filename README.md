@@ -57,7 +57,7 @@ Although I have worked on major and minor features and fixes all over the codeba
 - Browser extension: 70% me
 - REST API: 95% me
 - Database: 95% me
-- Frontend: 20% me
+- Frontend: 50% me
 - Automated tests: 90% me
 - CI/CD pipeline: 100% me
 - Build system: 100% me
