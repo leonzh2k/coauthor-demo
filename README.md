@@ -1,6 +1,6 @@
 # Coauthor
 
-This repository contains a code sample from Coauthor, the flagship research project of the MaffieLab at Cornell University which I am the technical lead of currently. You can view the production website at [coauthor.fly.dev](https://coauthor.fly.dev). I have obtained permission from my lab director to release this code sample to showcase my professional skills. However, I have omitted certain portions of the codebase as it is the most unique and "proprietary" part of our research and it is in our best interest to not make it publicly accessible at this time. But, if you are visiting this repository as part of a hiring process, temporary private access to these omitted portions is available upon request.
+This repository contains the codebase for Coauthor, the flagship research project of the MaffieLab at Cornell University which I am the technical lead of currently. You can view the production website at [coauthor.fly.dev](https://coauthor.fly.dev). I have obtained permission from my lab director to release the codebase to showcase my professional skills. However, I have omitted certain portions of the codebase as it is the most unique and "proprietary" part of our research and it is in our best interest to not make it publicly accessible at this time. But, if you are visiting this repository as part of a hiring process, temporary private access to these omitted portions is available upon request.
 
 ## Project Overview
 
@@ -17,9 +17,20 @@ Data, and data quality, remain a central limitation in understanding these conce
 
 </details>
 
-### Architecture and Main User Flows
+### How does it solve the problem?
 
 The system consists of four main components: a browser extension, REST API, database, and frontend.
+
+![image](https://github.com/user-attachments/assets/4b18b083-a6ff-4dde-8f05-31dcc8f4a543)
+
+#### Tech Stack
+
+- Browser Extension: TypeScript
+- REST API: TypeScript, Node.js, Express
+- Frontend: TypeScript, React, CSS
+- Database: PostgreSQL
+- CI/CD: GitHub Actions, Bash, YAML
+- Application Monitoring: Sentry
 
 #### User Flow 1: Contributing Data
 
@@ -38,15 +49,6 @@ What happens when a user wants to view the crowdsourced dataset?
 2.  Frontend sends GET request to REST API
 3.  API queries the database to calculate journal statistics. Only aggregate statistics are sent back to the client to preserve anonymity of individual users
 4.  Frontend receives the response and re-renders to display the data to user
-
-### Tech Stack
-
-- Browser Extension: TypeScript
-- REST API: TypeScript, Node.js, Express
-- Frontend: TypeScript, React, CSS
-- Database: PostgreSQL
-- CI/CD: GitHub Actions, Bash, YAML
-- Application Monitoring: Sentry
 
 ## My Contributions
 
